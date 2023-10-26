@@ -33,7 +33,11 @@ class LoginActivity : ComponentActivity() {
 //            }
 //        }
         userRepository = UserRepository(applicationContext)
-
+        binding.registerButton.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         binding.loginButton.setOnClickListener {
             val username = binding.username.text.toString()
             val password = binding.password.text.toString()
@@ -48,11 +52,6 @@ class LoginActivity : ComponentActivity() {
                 } else {
                     Toast.makeText(this@LoginActivity, "Login Gagal", Toast.LENGTH_SHORT).show()
                 }
-            }
-            binding.registerButton.setOnClickListener {
-                val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-                startActivity(intent)
-                finish()
             }
         }
     }
